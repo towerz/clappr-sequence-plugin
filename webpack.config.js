@@ -21,8 +21,8 @@ webpackConfig.externals = {
 webpackConfig.output = {
   path: path.resolve(__dirname, 'dist'),
   publicPath: '/',
-  filename: 'clappr-sequential-playback.js',
-  library: 'ClapprSequentialPlayback',
+  filename: 'clappr-sequence-plugin.js',
+  library: 'SequencePlugin',
   libraryTarget: 'umd',
 };
 

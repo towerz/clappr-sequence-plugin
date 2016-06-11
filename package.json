@@ -1,7 +1,7 @@
 {
-  "name": "clappr-sequential-playback",
+  "name": "clappr-sequence-plugin",
   "version": "0.0.1",
-  "description": "Clappr plugin for handling multiple sources in a sequential manner",
+  "description": "Clappr plugin for playing multiple sources in sequence",
   "main": "dist/index.js",
   "scripts": {
     "build": "node_modules/.bin/webpack --progress",
