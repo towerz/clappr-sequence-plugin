@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="stylesheets/bootstrap-theme.min.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="stylesheets/style.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="shortcut icon" type="image/png" href="i/favico.png">
+  </head>
+  <body>
+    <header class="header">
+      <span>Clappr</span>
+      <ul>
+        <li><a href="http://clappr.github.io/">docs</a></li>
+      </ul>
+    </header>
+    <section class="container">
+      <div class="main">
+        <div id="output">
+          <div id="player-wrapper" class="player"></div>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div id="editor">var player = new Clappr.Player({
+          sources: ['http://clappr.io/highline.mp4', 'http://www.streambox.fr/playlists/x36xhzz/x36xhzz.m3u8'],
+          poster: 'http://clappr.io/poster.png',
+          height: 360,
+          width: 640,
+          parentId: "#player-wrapper",
+          plugins: [SequencePlugin]
+        });
+</div>
+        <button class="run btn btn-primary">Run</button>
+        <div id="console"> </div>
+      </div>
+    </section>
+    <footer class="footer"></footer>
+    <script type="text/javascript" charset="utf-8" src="j/main.js" async></script>
+    <script type="text/javascript" charset="utf-8" src="j/editor/ace.js" async></script>
+    <script type="text/javascript" charset="utf-8" src="//cdn.clappr.io/latest/clappr.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/latest/clappr-sequence-plugin.js"></script>
+    <script>
+      var urlParams;
+      (function() {
+        window.onpopstate = function () {
+          var match,
+              pl     = /\+/g,  // Regex for replacing addition symbol with a space
+              search = /([^&=]+)=?([^&]*)/g,
+              decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+              query  = window.location.search.substring(1);
+
+          urlParams = {};
+          while (match = search.exec(query))
+            urlParams[decode(match[1])] = decode(match[2]);
+        }
+        window.onpopstate();
+      })();
+
+      var player = new Clappr.Player({
+        sources: ['http://clappr.io/highline.mp4', 'http://www.streambox.fr/playlists/x36xhzz/x36xhzz.m3u8'],
+        poster: 'http://clappr.io/poster.png',
+        height: 360,
+        width: 640,
+        parentId: "#player-wrapper",
+        plugins: [SequencePlugin]
+      });
+
+      //editor
+      window.onload = function() {
+        var editor = ace.edit("editor");
+        var session = editor.getSession();
+
+        editor.setTheme("ace/theme/katzenmilch");
+        session.setMode("ace/mode/javascript");
+        session.setTabSize(2);
+        session.setUseSoftTabs(true);
+
+        var parser = new Parser($('#output'));
+        $('.run').click(function() {
+          var code = ace.edit('editor').getSession().getValue();
+          parser.parse(code);
+        });
+      }
+    </script>
+  </body>
+</html>
