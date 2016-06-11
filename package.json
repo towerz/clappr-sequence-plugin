@@ -2,10 +2,10 @@
   "name": "clappr-sequence-plugin",
   "version": "0.0.1",
   "description": "Clappr plugin for playing multiple sources in sequence",
-  "main": "dist/index.js",
+  "main": "dist/clappr-sequence-plugin.js",
   "scripts": {
     "build": "node_modules/.bin/webpack --progress",
-    "release": "node_modules/.bin/webpack --progress -d --optimize-minimize --optimize-dedupe --output-filename youtube_playback.min.js",
+    "release": "node_modules/.bin/webpack --progress -d --optimize-minimize --optimize-dedupe --output-filename clappr-sequence-plugin.min.js",
     "start": "node_modules/.bin/webpack-dev-server --content-base public/ --output-public-path /latest --hot",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "node_modules/.bin/webpack --progress --watch"
