@@ -1,0 +1,40 @@
+{
+  "name": "clappr-sequential-playback",
+  "version": "0.0.1",
+  "description": "Clappr plugin for handling multiple sources in a sequential manner",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "node_modules/.bin/webpack --progress",
+    "release": "node_modules/.bin/webpack --progress -d --optimize-minimize --optimize-dedupe --output-filename youtube_playback.min.js",
+    "start": "node_modules/.bin/webpack-dev-server --content-base public/ --output-public-path /latest --hot",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "node_modules/.bin/webpack --progress --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/towerz/clappr-sequential-playback.git"
+  },
+  "keywords": [
+    "clappr",
+    "plugin",
+    "playlist",
+    "sequence"
+  ],
+  "author": "Bruno Torres <me@brunotorr.es>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/towerz/clappr-sequential-playback/issues"
+  },
+  "homepage": "https://github.com/towerz/clappr-sequential-playback#readme",
+  "devDependencies": {
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-classes": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "clappr": "^0.2.54",
+    "clean-webpack-plugin": "^0.1.9",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
