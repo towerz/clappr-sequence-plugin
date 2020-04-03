@@ -6,7 +6,7 @@ export default class SequencePlugin extends CorePlugin {
 
   bindEvents() {
     this.listenTo(this.core, Events.CORE_CONTAINERS_CREATED, this.onContainersCreated)
-    this.listenTo(this.core.mediaControl, Events.MEDIACONTROL_CONTAINERCHANGED, this.onContainerChanged)
+    this.listenTo(this.core, Events.CORE_ACTIVE_CONTAINER_CHANGED, this.onContainerChanged)
   }
 
   onContainersCreated() {
@@ -18,7 +18,7 @@ export default class SequencePlugin extends CorePlugin {
         } else if (container !== firstValidSource) {
           container.$el.hide()
         } else {
-          this.core.mediaControl.setContainer(container)
+          this.core.activeContainer = container
         }
       })
     }
@@ -34,12 +34,13 @@ export default class SequencePlugin extends CorePlugin {
   }
 
   playNextVideo() {
+    debugger
     let index = this.core.containers.indexOf(this._container)
     if (index >= 0 && index < this.core.containers.length - 1) {
       let container = this.core.containers[index + 1]
       container.$el.show()
       this._container.$el.hide()
-      this.core.mediaControl.setContainer(this.core.containers[index + 1])
+      this.core.activeContainer = this.core.containers[index + 1]
       container.play()
     }
   }
